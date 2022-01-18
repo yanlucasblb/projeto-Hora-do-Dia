@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Projeto Hora do Dia</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Untitled-2.css" />
+    <link rel="shortcut icon" type="imagem/x-icon" href="/IMGS/clock_icon-icons.com_54407.ico" />
+
+</head>
+
+<body id="bkg">
+
+    <div class="container">
+        <div class="box">
+            <header>
+                <h1 class="tittle">Hora Do Dia </h1>
+            </header>
+            <a class="txtHora" id="txtHora"> </a>
+            <img class="img" id="imgHora" src="" />
+            <script>
+                const zeroFill = n => {
+                    return ('0' + n).slice(-2);
+                }
+                const interval = setInterval(() => {
+                    const now = new Date();
+                    var hora = now.getHours()
+
+                    const dataHora = zeroFill(now.getHours()) + ':' + zeroFill(now.getMinutes()) + ':' + zeroFill(now.getSeconds());
+                    
+
+                    document.getElementById('txtHora').innerHTML = dataHora;
+                    if (hora < 12 && hora >= 5) {
+                        document.getElementById("imgHora").src = "IMGS/img-manha.jpg";
+                        document.getElementById("bkg").style.backgroundColor = "#007CFF";
+                    } else if (hora >= 12 && hora <= 18) {
+                        document.getElementById("imgHora").src = "IMGS/img-tarde.jpg";
+                        document.getElementById("bkg").style.backgroundColor = "#FFA200";
+
+                    } else if (hora > 18 && hora < 5) {
+                        document.getElementById("imgHora").src = "IMGS/img-noite.jpg";
+                        document.getElementById("bkg").style.backgroundColor = "#0F2741";
+                    }
+                }, 1000);
+
+            </script>
+
+        </div>
+        <a class="ass">@Yan Balbi</a>
+    </div>
+
+
+</body>
+
+</html>
